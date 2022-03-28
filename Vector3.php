@@ -7,4 +7,4 @@ use pocketmine\entity\Location;
 use pocketmine\world\Position;
 
 //TODO: finish this
-class Vecotr3 {}
+class Vector3 {}
