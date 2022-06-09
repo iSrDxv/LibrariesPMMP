@@ -119,21 +119,21 @@ class Scoreboard
     $this->getPlayer()->getNetworkSession()->sendDataPacket($pk);
   }
   
-  public function removeLine(int $id): void
+  public function removeLine(int $id = 0): void
   {
     $line = $this->lines[$id];
     if (isset($line)) {
       $pk = new SetScorePacket();
       $pk->type = SetScorePacket::TYPE_REMOVE; 
       $pk->entries[] = $line;
-      $this->getPlayer()->getNetworkSession()->sendDataPacket();
+      $this->getPlayer()->getNetworkSession()->sendDataPacket($pk);
       unset($line);
     }
   }
   
   public function removeAllLine(): void
   {
-    if (empty($this->lines) & ($this->spawned !== true)) {
+    if (empty($this->lines) & ($this->spawned !== false)) {
       return;
     }
     foreach($this->lines as $line) {
