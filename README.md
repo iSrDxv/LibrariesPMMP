@@ -38,7 +38,7 @@ Or do you want to delete a specific line? here is the code to remove it
 $scoreboard->removeLine(0);
 ```
 
-Or do you go for the easiest, to remove all lines? do this from once man
+Or do you go for the easiest to, remove all lines? do this from once man
 ```php
 $scoreboard->removeAllLine();
 ```
