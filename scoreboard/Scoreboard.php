@@ -14,13 +14,13 @@ namespace libs\scoreboard;
 
 use pocketmine\player\Player;
 
-use pocketmine\network\protocol\{
+use pocketmine\network\mcpe\protocol\{
   SetDisplayObjectivePacket,
   SetScorePacket,
   SetScoreboardIdentityPacket,
   RemoveObjectivePacket
 };
-use pocketmine\network\protocol\types\ScorePacketEntry;
+use pocketmine\network\mcpe\protocol\types\ScorePacketEntry;
 
 class Scoreboard
 {
