@@ -15,7 +15,7 @@ namespace libs\scoreboard;
 use pocketmine\player\Player;
 
 use pocketmine\network\protocol\{
-  SetObjectivePacket,
+  SetDisplayObjectivePacket,
   SetScorePacket,
   SetScoreboardIdentityPacket,
   RemoveObjectivePacket
@@ -61,7 +61,7 @@ class Scoreboard
   public function spawn(): void 
   {
     if (!$this->spawned) {
-      $pk = SetObjectivePacket::create(SetObjectivePacket::DISPLAY_SLOT_SIDEBAR, $this->getPlayer()->getName(), $this->title, "dummy", SetObjectivePacket::SORT_ORDER_ASCENDING);
+      $pk = SetDisplayObjectivePacket::create(SetDisplayObjectivePacket::DISPLAY_SLOT_SIDEBAR, $this->getPlayer()->getName(), $this->title, "dummy", SetDisplayObjectivePacket::SORT_ORDER_ASCENDING);
       $this->getPlayer()->getNetworkSession()->sendDataPacket($pk);
       $this->spawned = true;
       return;
@@ -108,9 +108,11 @@ class Scoreboard
     for ($i = count($lines); $i < 15; $i++) {
       $entry = new ScorePacketEntry();
       $entry->type = ScorePacketEntry::TYPE_PLAYER;
+      
       $entry->scoreboardId = $i; $entry->score = $i;
       $entry->customName = $lines[$i];
       $entry->objectiveName = $this->getPlayer()->getName();
+      
       $this->lines[$i] = $entry;
       $entries[] = $entry;
     }
